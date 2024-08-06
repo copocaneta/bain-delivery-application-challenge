@@ -39,9 +39,7 @@ const fetchCoordinates = async (address) => {
 const fetchRoadDistance = async (location1, location2) => {
     try {
         const response = await axios.get(
-            `${
-                process.env.DATABASE === "production" ? "https" : "http"
-            }://router.project-osrm.org/route/v1/driving/${location1};${location2}?overview=false`
+            `https://router.project-osrm.org/route/v1/driving/${location1};${location2}?overview=false`
         );
         console.log("fastio", response.data);
         return response.data.routes[0].distance;
