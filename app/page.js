@@ -104,14 +104,14 @@ export default function Home() {
                     source: address1,
                     destination: address2,
                     distance_line: calculatedDistance,
-                    distance_road: roadDistance,
+                    distance_roads: roadDistance,
                 });
 
                 const response = await axios.post("/api/save-distance", {
                     source: address1,
                     destination: address2,
                     distance_line: calculatedDistance,
-                    distance_road: roadDistance,
+                    distance_roads: roadDistance,
                 });
 
                 console.log("Save response:", response.data);
