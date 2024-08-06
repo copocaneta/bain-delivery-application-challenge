@@ -23,7 +23,7 @@ const dbPath = path.resolve("./database.sqlite");
         // Insert a test record
         await db.run(
             "INSERT INTO distances (source, destination, distance_line, distance_roads) VALUES (?, ?, ?, ?)",
-            ["Test Source", "Test Destination", 100.0]
+            ["Test Source", "Test Destination", 100.0, 150.0]
         );
 
         // Query the table
