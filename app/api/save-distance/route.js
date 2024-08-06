@@ -32,8 +32,15 @@ const saveDistancePostgreSQL = async (
     distance_line,
     distance_roads
 ) => {
-    await sql`INSERT INTO distances (source, destination, distance_line, distance_roads) VALUES (${source}, ${destination}, ${distance_line}, ${distance_roads})`;
-    return { message: "Data saved successfully" };
+    try {
+        await sql`INSERT INTO distances (source, destination, distance_line, distance_roads) VALUES (${source}, ${destination}, ${distance_line}, ${distance_roads})`;
+        return { message: "Data saved successfully" };
+    } catch (error) {
+        return NextResponse.json(
+            { error: "Failed to insert into PostgreSQL" },
+            { status: 500 }
+        );
+    }
 };
 
 export async function POST(req) {
