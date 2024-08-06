@@ -1,0 +1,85 @@
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1a1d16; /* defau background color */
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    padding: 0 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.slider .slider-text {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+}
+
+input:checked + .slider {
+    background-color: #2196f3;
+}
+
+.slider .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    transition: 0.4s;
+}
+
+input:checked + .slider .icon {
+    left: calc(100% - 45px);
+}
+
+.slider .icon i {
+    font-size: 24px;
+    color: white;
+    /* color: #000; */
+}
+
+input:checked + .slider .icon i {
+    color: white; /* icon color for the crow (blue) when checked */
+    /* color: #2196f3; */
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    left: 5px;
+    bottom: 5px;
+    /* background-color: white; */
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider:before {
+    transform: translateX(262px);
+}
+
+/* rounded slider */
+.slider.round {
+    border-radius: 34px;
+}
