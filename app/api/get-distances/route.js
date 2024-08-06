@@ -25,7 +25,6 @@ const getDistancesPostgreSQL = async () => {
 
 export async function GET() {
     try {
-        console.log("process.env", process.env);
         if (process.env.DATABASE === "production") {
             return NextResponse.json(await getDistancesPostgreSQL());
         } else {

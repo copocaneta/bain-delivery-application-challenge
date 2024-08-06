@@ -7,7 +7,12 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const saveDistanceSQLite = async (source, destination, distance) => {
+const saveDistanceSQLite = async (
+    source,
+    destination,
+    distance_line,
+    distance_roads
+) => {
     const db = await open({
         filename: dbPath,
         driver: sqlite3.Database,
@@ -15,28 +20,45 @@ const saveDistanceSQLite = async (source, destination, distance) => {
 
     await db.run(
         "INSERT INTO distances (source, destination, distance_line, distance_roads) VALUES (?, ?, ?, ?)",
-        [source, destination, distance.distance_line, distance.distance_roads]
+        [source, destination, distance_line, distance_roads]
     );
 
     return { message: "Data saved successfully" };
 };
 
-const saveDistancePostgreSQL = async (source, destination, distance) => {
-    await sql`INSERT INTO distances (source, destination, distance_line, distance_roads) VALUES (${source}, ${destination}, ${distance.distance_line}, ${distance.distance_roads})`;
+const saveDistancePostgreSQL = async (
+    source,
+    destination,
+    distance_line,
+    distance_roads
+) => {
+    await sql`INSERT INTO distances (source, destination, distance_line, distance_roads) VALUES (${source}, ${destination}, ${distance_line}, ${distance_roads})`;
     return { message: "Data saved successfully" };
 };
 
 export async function POST(req) {
     try {
-        const { source, destination, distance } = await req.json();
+        const { source, destination, distance_line, distance_roads } =
+            await req.json();
 
         if (process.env.DATABASE === "production") {
+            console.log({ source, destination, distance_line, distance_roads });
             return NextResponse.json(
-                await saveDistancePostgreSQL(source, destination, distance)
+                await saveDistancePostgreSQL(
+                    source,
+                    destination,
+                    distance_line,
+                    distance_roads
+                )
             );
         } else {
             return NextResponse.json(
-                await saveDistanceSQLite(source, destination, distance)
+                await saveDistanceSQLite(
+                    source,
+                    destination,
+                    distance_line,
+                    distance_roads
+                )
             );
         }
     } catch (error) {
