@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useQuery } from "react-query";
 import "./page.css";
 import TogglerModeButton from "@/components/TogglerModeButton";
 
@@ -12,15 +11,29 @@ const fetchResults = async () => {
 };
 
 export default function SavedResults() {
-    const {
-        data: results,
-        isLoading,
-        isError,
-        error,
-    } = useQuery("savedResults", fetchResults);
+    const [results, setResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
+    const [error, setError] = useState(null);
 
     const [isOn, setIsOn] = useState(false);
     const [showDistanceLine, setShowDistanceLine] = useState(false);
+
+    useEffect(() => {
+        const getResults = async () => {
+            try {
+                const data = await fetchResults();
+                setResults(data);
+            } catch (err) {
+                setIsError(true);
+                setError(err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        getResults();
+    }, []);
 
     const toggleSwitch = () => {
         setIsOn(!isOn);
@@ -42,7 +55,6 @@ export default function SavedResults() {
                             <p>Source: {result.source}</p>
                             <p>Destination: {result.destination}</p>
                             <p>
-                                {/* {showDistanceLine ? ( */}
                                 Distance:{" "}
                                 {showDistanceLine
                                     ? result.distance_line.toFixed(2)
