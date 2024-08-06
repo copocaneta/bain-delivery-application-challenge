@@ -158,14 +158,14 @@ export default function Home() {
 
                 <input
                     type="text"
-                    placeholder="Enter Address 1"
+                    placeholder="Source Address"
                     value={address1}
                     onChange={(e) => setAddress1(e.target.value)}
                     className="input"
                 />
                 <input
                     type="text"
-                    placeholder="Enter Address 2"
+                    placeholder="Destination Address"
                     value={address2}
                     onChange={(e) => setAddress2(e.target.value)}
                     className="input"
