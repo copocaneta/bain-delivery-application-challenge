@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bain Challenge - Thiago Bernardi
 
-## Getting Started
+This project is a Distance Calculator. It calculates the distance between two addresses using both the Haversine formula to get the **_as the crow flies_** distance and the Open Source Routing Machine (OSRM) API to get the **_distance by land transport_**. The results are saved in a SQLite database. The application is containerized with Docker for easy deployment.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   Calculating As the Crow Flies Distance:
+    The application calculates the as the crow flies distance using the Haversine formula. This formula determines the shortest distance between two points on a sphere, measured along the surface of the sphere. For more information, you can refer to the [Wikipedia article on the Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   Calculating By Land Transport Distance:
+    The application also calculates the distance by land transport using the OSRM (Open Source Routing Machine) API. OSRM is a high-performance routing engine that computes shortest paths in road networks. It is designed for use in interactive web applications, providing near-instantaneous route calculations. For more information, visit the [OSRM project website](http://project-osrm.org/).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+-   Saved Results:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    The URL http://localhost:3000/saved-results lists the saved data with the following columns:
 
-## Learn More
+    -   Source Address
+    -   Destination Address
+    -   Distance
 
-To learn more about Next.js, take a look at the following resources:
+## Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   Node.js (version 18 or higher)
+-   Docker (if you choose to run the project with Docker)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project Setup
 
-## Deploy on Vercel
+### Without Docker
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the repository**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    ```bash
+    git clone https://github.com/your-username/bain-challenge-thiago-bernardi.git
+    cd bain-challenge-thiago-bernardi
+    ```
+
+2. Install dependencies
+
+    ```bash
+    npm install
+    ```
+
+3. Initialize the database
+
+    ```bash
+    node scripts/init-db.js
+    ```
+
+4. Run the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+    - The application will be running at `http://localhost:3000`.
+
+5. Build and run the production server
+
+    ```bash
+    npm run build
+    npm run start
+    ```
+
+    - The production server will be running at `http://localhost:3000`.
+
+### With Docker
+
+1. Build the Docker image
+
+    ```bash
+    docker build -t bain_challenge_thiago-bernardi --no-cache .
+    ```
+
+2. Run the Docker container
+
+    ```bash
+    docker run --name bain_challenge_container -p 3000:3000 -d bain_challenge_thiago-bernardi
+    ```
+
+    - The application will be running at `http://localhost:3000`.
+
+3. Stop and remove the Docker container (optional)
+
+    - To stop the container:
+
+    ```bash
+    docker stop bain_challenge_container
+    ```
+
+    - To remove the container:
+
+    ```bash
+    docker rm bain_challenge_container
+    ```
+
+4. View logs of the Docker container:
+
+    ```bash
+    docker logs bain_challenge_container
+    ```
+
+## Project Structure
+
+-   `/app`: Contains the Next.js application code and pages.
+-   `/components`: Reusable React components.
+-   `/config`: Configuration files.
+-   `/scripts`: Scripts for initializing the database.
+-   `/public`: Static assets.
+
+## Notes
+
+-   The `.dockerignore` file ensures that the development database and unnecessary files are not included in the Docker image.
+-   The `Dockerfile` is configured to build the production version of the application and ensure the SQLite database is initialized.
+-   The application uses the Nominatim API to fetch coordinates for addresses.
