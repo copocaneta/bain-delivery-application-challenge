@@ -20,6 +20,7 @@ export default function SavedResults() {
     } = useQuery("savedResults", fetchResults);
 
     const [isOn, setIsOn] = useState(false);
+    const [showDistanceLine, setShowDistanceLine] = useState(false);
 
     const toggleSwitch = () => {
         setIsOn(!isOn);
@@ -41,7 +42,12 @@ export default function SavedResults() {
                             <p>Source: {result.source}</p>
                             <p>Destination: {result.destination}</p>
                             <p>
-                                Distance: {result.distance_line.toFixed(2)} km
+                                {/* {showDistanceLine ? ( */}
+                                Distance:{" "}
+                                {showDistanceLine
+                                    ? result.distance_line.toFixed(2)
+                                    : result.distance_roads.toFixed(2)}{" "}
+                                km
                             </p>
                         </div>
                     ))}
