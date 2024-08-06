@@ -96,7 +96,8 @@ h1 {
 
 .result {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 31px;
+    font-weight: 900;
 }
 
 .results-list {
