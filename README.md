@@ -21,7 +21,7 @@
     -   Non-Relation Database: Serves Geospatial data to support Location Service.
     -   Frontend Application: Web and mobile interfaces for customers and delivery partners.
 
--   These components handle the basic requirements of placing orders and managing deliveries. For a final production version, I think we could expand to include the services in the provided diagrams, such as separate search, discount, pricing, and 'Change Data Capture' services, along with Kafka for event streaming.
+-   These components handle the basic requirements of placing orders and managing deliveries. For a final production version, I think we could expand to include aditional services such as elastic search, discount service, pricing service, and 'Change Data Capture' along with Kafka for event streaming.
 
     <img width="862" alt="Screenshot 2024-08-07 at 14 00 04" src="https://github.com/user-attachments/assets/dfb39073-702a-4a1e-bd9f-2546c55e3fe2">
 
