@@ -151,7 +151,7 @@ export default function Home() {
 
     return (
         <div className="container">
-            <h1>Distance Calculator</h1>
+            <h1>Distance Calculator by Thiago Bernardi</h1>
             <form className="form" onSubmit={handleCalculateDistance}>
                 <TogglerModeButton isOn={isOn} toggleSwitch={toggleSwitch} />
 
