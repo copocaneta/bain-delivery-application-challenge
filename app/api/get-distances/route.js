@@ -1,9 +1,16 @@
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-import { sql } from "@vercel/postgres";
+// import { sql } from "@vercel/postgres";
 import { dbPath } from "../../../config/db";
 import { NextResponse } from "next/server";
 import dotenv from "dotenv";
+import pg from "pg";
+
+const { Pool } = pg;
+
+const pool = new Pool({
+    connectionString: process.env.POSTGRES_URL,
+});
 
 dotenv.config();
 
@@ -19,11 +26,25 @@ const getDistancesSQLite = async () => {
 };
 
 const getDistancesPostgreSQL = async () => {
-    const { rows } = await sql`SELECT * FROM distances`;
-    return rows;
+    // @vercel/postgres:
+
+    // const { rows } = await sql`SELECT * FROM distances LIMIT 110`;
+    // console.log(rows.length);
+    // console.log({ rows });
+    // return rows;
+
+    const client = await pool.connect();
+    try {
+        const res = await client.query("SELECT * FROM distances");
+        console.log("Fetched from PostgreSQL:", res.rows.length);
+        return res.rows;
+    } finally {
+        client.release();
+    }
 };
 
 export async function GET() {
+    console.log(`I am on ${process.env.DATABASE} database`);
     try {
         if (process.env.DATABASE === "production") {
             return NextResponse.json(await getDistancesPostgreSQL());
