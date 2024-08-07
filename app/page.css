@@ -112,3 +112,10 @@ h1 {
     border-radius: 4px;
     text-align: left;
 }
+
+.author {
+    font-size: 13px;
+    font-weight: bolder;
+    margin-top: -16px;
+    margin-bottom: 10px;
+}
