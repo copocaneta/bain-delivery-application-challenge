@@ -71,6 +71,8 @@
 
 This project is a Distance Calculator. It calculates the distance between two addresses using both the Haversine formula to get the **_as the crow flies_** distance and the Open Source Routing Machine (OSRM) API to get the **_distance by land transport_**. The results are saved in a SQLite database. The application is containerized with Docker for easy deployment.
 
+URL for online web app: [https://bain-delivery-application-challenge.vercel.app/](https://bain-delivery-application-challenge.vercel.app/)
+
 ### Features
 
 -   Calculating As the Crow Flies Distance:
