@@ -11,12 +11,21 @@
 -   For the working prototype, fewer services will be more manageable. The necessary pieces of software include:
 
     -   API Gateway: Single entry point for all requests.
-    -   Customer Service: Manages customer data and interactions.
-    -   Order Service: Manages order placement and processing.
-    -   Database: Stores both customer and order information.
+    -   Customer Service: Manages customer data and interactions
+    -   Restaurant Service: Manages restaurant registers and data.
+    -   Delivery Driver Service: Manages the delivery drivers registrations and data
+    -   Menu Service: Manages menus from restaurants.
+    -   Location Service: Manages customer and delivery drivers location.
+    -   Order Service: Manages order placement and processing
+    -   Relational Database: Stores customer, order information, menu and restaurant data.
+    -   Non-Relation Database: Serves Geospatial data to support Location Service.
     -   Frontend Application: Web and mobile interfaces for customers and delivery partners.
 
 -   These components handle the basic requirements of placing orders and managing deliveries. For a final production version, I think we could expand to include the services in the provided diagrams, such as separate search, discount, pricing, and 'Change Data Capture' services, along with Kafka for event streaming.
+
+    <img width="862" alt="Screenshot 2024-08-07 at 14 00 04" src="https://github.com/user-attachments/assets/dfb39073-702a-4a1e-bd9f-2546c55e3fe2">
+
+
 
 **Question #2**
 
