@@ -38,6 +38,9 @@ const getDistancesPostgreSQL = async () => {
         const res = await client.query("SELECT * FROM distances");
         console.log("Fetched from PostgreSQL:", res.rows.length);
         return res.rows;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw new Error(error);
     } finally {
         client.release();
     }
