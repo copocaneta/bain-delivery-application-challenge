@@ -69,7 +69,7 @@
 
 ## Coding Part
 
-This project is a Distance Calculator. It was built with NextJS with all the API routes built into it. It calculates the distance between two addresses using both the Haversine formula to get the **_as the crow flies_** distance and the Open Source Routing Machine (OSRM) API to get the **_distance by land transport_**. The results are saved in a SQLite database. The application is containerized with Docker for easy deployment.
+This project is a Distance Calculator. It was built with NextJS with all the API routes built into it. It calculates the distance between two addresses using both the Haversine formula to get the **_as the crow flies_** distance and the Open Source Routing Machine (OSRM) API to get the **_distance by land transport_**. The results are saved in a SQLite database. The application is containerized with Docker for easy deployment. The web app uses a SQLite database on development and a PostgreSQL database from Vercel on "production" (on Vercel servers).
 
 URL for online web app: [https://bain-delivery-application-challenge.vercel.app/](https://bain-delivery-application-challenge.vercel.app/)
 
