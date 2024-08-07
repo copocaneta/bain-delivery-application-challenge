@@ -76,7 +76,7 @@ URL for online web app: [https://bain-delivery-application-challenge.vercel.app/
 ### Features
 
 -   Calculating As the Crow Flies Distance:
-    The application calculates the as the crow flies distance using the Haversine formula. This formula determines the shortest distance between two points on a sphere, measured along the surface of the sphere. For more information, you can refer to the [Wikipedia article on the Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula).
+    The application calculates the as the crow flies distance using the Haversine formula. This formula determines the shortest distance between two points on a sphere, measured along the surface of the sphere. For more information, you can refer to the [Wikipedia article on the Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula). Credit for Harversine formula implementation on JavaScript [question on StackOverflow](https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript)..
 
 -   Calculating By Land Transport Distance:
     The application also calculates the distance by land transport using the OSRM (Open Source Routing Machine) API. OSRM is a high-performance routing engine that computes shortest paths in road networks. It is designed for use in interactive web applications, providing near-instantaneous route calculations. For more information, visit the [OSRM project website](http://project-osrm.org/).
