@@ -41,7 +41,6 @@ const fetchRoadDistance = async (location1, location2) => {
         const response = await axios.get(
             `https://router.project-osrm.org/route/v1/driving/${location1};${location2}?overview=false`
         );
-        console.log("fastio", response.data);
         return response.data.routes[0].distance;
     } catch (error) {
         console.error("Error fetching road distance:", error);
