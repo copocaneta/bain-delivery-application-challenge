@@ -172,3 +172,9 @@ This project is a Distance Calculator. It calculates the distance between two ad
 -   The `.dockerignore` file ensures that the development database and unnecessary files are not included in the Docker image.
 -   The `Dockerfile` is configured to build the production version of the application and ensure the SQLite database is initialized.
 -   The application uses the Nominatim API to fetch coordinates for addresses.
+
+### Demo
+
+https://github.com/user-attachments/assets/f229020f-7f29-4ab1-89b1-8299bbe1b30f
+
+
